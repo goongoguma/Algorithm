@@ -146,5 +146,83 @@ function tipCalculator(bill) {
     // (NOTE: To calculate 20% of a value, simply multiply if with 20/100 = 0.2)
 
 
+/******************************
+* CODING CHALLENGE 4
+*/
+// Let's remember the first coding challenge where Mark and John compared their BMIs.
+// Let's now implement the same functionality with objects and methods.
+
+// 1. For each of them, create an object with properties for their full name, mass and height
+// var mark = {
+//   FullName: 'Mark_Kim',
+//   mass: 70,
+//   height: 1.80
+// }
+
+// var john = {
+//   FullName: 'John_Smith',
+//   mass: 65,
+//   height: 1.70
+// }
+
+// 2. Then, add a method to each object to calculate the BMI. Save the BMI to the object and also return it 
+//    from the method.
+// var mark = {
+//   FullName: 'Mark Kim',
+//   mass: 70,
+//   height: 1.80,
+//   calBMI : function() {
+//     this.BMI = this.mass / (this.height * this.height);
+//     return this.BMI
+//   }
+// };
+// mark.calBMI();
+// console.log(mark);
+
+// var john = {
+//   FullName: 'John Smith',
+//   mass: 65,
+//   height: 1.70,
+//   calBMI : function() {
+//     this.BMI = this.mass / (this.height * this.height);
+//     return this.BMI
+//   }
+// }
+// john.calBMI();
+// console.log(john);
+
+// 3. In the end, log to the console who has the highest BMI, together with the full name and the respective BMI.
+//    Don't forget they might have the same BMI.
+
+// function highestBMI(A,B){
+//   if(A > B) {
+//     console.log(mark.FullName + ' BMI is ' + mark.BMI);
+//   } else if(A < B){
+//     console.log(john.FullName + ' BMI is ' + john.BMI);
+//   } else {
+//     console.log('They have the same BMI');
+//   }
+// }
+
+// console.log(highestBMI(mark.BMI,john.BMI));
+
+/* 
+function highestBMI(A,B){
+  if(A > B) {
+    console.log(mark.FullName + ' BMI is ' + mark.BMI);
+  } else if(A < B){
+    console.log(john.FullName + ' BMI is ' + john.BMI);
+  } else {
+    console.log('They have the same BMI');
+  }
+}
+
+console.log(highestBMI(mark.calBMI(),john.calBMI()));
+*/
+
+// Remember: BMI = mass / height^2 = mass / (height * height). (mass in kg and height in meter).
+
+
+
 
 
