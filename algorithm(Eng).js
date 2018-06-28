@@ -294,8 +294,58 @@ var john = {
 // 7. Calculate the average tip for each family
 
 // 8. Log to the console which family paid the highest tips on average 
+/*
+var mark = {
+    fullName: 'Mark Miller',
+    bills: [77, 475, 110, 45],
+    calcTips: function(){
+        this.tips = [];
+        this.finalvalues = [];
+  
+        for (var i = 0; i < this.bills.length; i++){
+          // Determine percentage based on tipping rules
+          var percentage;
+          if(this.bills[i] < 100){
+            percentage = .2;
+          } else if (this.bills[i] >= 100 && this.bills[i] < 300){
+            percentage = .1;
+          } else {
+            percentage = .25;
+          }
+          
+          // Add results to the corresponding arrays
+  
+          this.tips[i] = this.bills[i] * percentage;
+          this.finalValues[i] = this.bills[i] + this.tips[i];
+  
+      }
+    }
+  }
+
+function calcAverage(tips) {
+  var sum = 0;
+  for(var i = 0; i < tips.length; i++) {
+    sum = sum + tips[i];
+  }
+  return sum / tips.length;
+}
 
 
+// Do the calculations
+  john.calcTips();
+  mark.calcTips();
+  console.log(john,mark);
+
+john.average = calcAverage(john.tips);
+mark.average = calcAverage(mark.tips);
+console.log(john,mark);
+
+if(john.averag > mark.average) {
+  console.log(john.fullName + ' s family pays higher tips, with an average of $'+john.average);
+} else if (john.averag < mark.average){
+  console.log(mark.fullName + ' s family pays higher tips, with an average of $'+mark.average);
+}
+*/
 
 
 
