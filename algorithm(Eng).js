@@ -244,46 +244,42 @@ if(avgCalc(john.tips) > avgCalc(mark.tips)){
 // So make sure that all your code is private and doesn't interfere with the other programmers code
 // (Hint: we learned a special technique to do exactly that).
 /*
- (function() {
-  function Question(question,answers,correct) {
-    this.question = question;
-    this.answers = answers;
-    this.correct = correct;
-  }
-  
-  Question.prototype.displayQuestion = function() {
-    console.log(this.question);
-    for (var i = 0; i < this.answers.length; i++) {
-      console.log(i + ':' + this.answers[i]);
-    }
-  }
-  
-  Question.prototype.checkAnswer = function(ans) {
-    if (ans === this.correct) {
-      console.log('correct answer!'); 
-    } else {
-      console.log('Wrong answer. Try again!')
-    }
-  }
-  
-  var q1 = new Question('Is JavaScript the collest programming language in the world?',['yes','no'],0);
-  
-  var q2 = new Question('What is the name of this course\'s teacher?',['John','Micheal','Jonas'],2);
-  
-  var q3 = new Question('What does best describe coding?'['Boring','Hard','Fun','Tediuos'],2);
-  
-  var questions = [q1, q2, q3];
-  
-  var n = Math.floor(Math.random() * questions.length);
-  
-  questions[n].displayQuestion();
-  
-  var answer = parseInt(prompt('Please select the correct answer.'));
-  
-  questions[n].checkAnswer(answer);
-  
- })();
+function Question(question,answers,correct) {
+  this.question = question,
+  this.answers = answers,
+  this.correct = correct
+}
+
+Question.prototype.displayAnswer = function() {
+  console.log(this.question)
+for(var i = 0; i < this.answers.length; i++) {
+  console.log(i + ':' + this.answers[i])
+ }
+}
+
+var q1 = new Question('What is your name?',['Tim','Jay','Sam'],1);
+var q2 = new Question('What city do you live in?', ['Seoul','Tokyo','Beijing'],0);
+var q3 = new Question('Do you like coding?',['yes I do','no I don\'t'],0);
+
+var arrQ = [q1,q2,q3];
+
+var n = Math.floor(Math.random() * arrQ.length);
+
+arrQ[n].displayAnswer();
+
+var answer = parseInt(prompt('Please select the correct answer.'));
+
+Question.prototype.rightAns = function(ans) {
+ if(ans === this.correct){
+   console.log ('that is correct')
+ } else {
+   console.log('that is wrong')
+ }
+}
+
+arrQ[n].rightAns(answer);
 */
+
 // var Question = function(question,answer1,answer2){
 //     this.Quiz = console.log(question),
 //     this.Answer1 = console.log(answer1),
