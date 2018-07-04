@@ -243,42 +243,46 @@ if(avgCalc(john.tips) > avgCalc(mark.tips)){
 // 7. Suppose this code would be a plugin for other programmers to use in their code. 
 // So make sure that all your code is private and doesn't interfere with the other programmers code
 // (Hint: we learned a special technique to do exactly that).
+
 /*
-function Question(question,answers,correct) {
-  this.question = question,
-  this.answers = answers,
-  this.correct = correct
-}
-
-Question.prototype.displayAnswer = function() {
-  console.log(this.question)
-for(var i = 0; i < this.answers.length; i++) {
-  console.log(i + ':' + this.answers[i])
- }
-}
-
-var q1 = new Question('What is your name?',['Tim','Jay','Sam'],1);
-var q2 = new Question('What city do you live in?', ['Seoul','Tokyo','Beijing'],0);
-var q3 = new Question('Do you like coding?',['yes I do','no I don\'t'],0);
-
-var arrQ = [q1,q2,q3];
-
-var n = Math.floor(Math.random() * arrQ.length);
-
-arrQ[n].displayAnswer();
-
-var answer = parseInt(prompt('Please select the correct answer.'));
-
-Question.prototype.rightAns = function(ans) {
- if(ans === this.correct){
-   console.log ('that is correct')
- } else {
-   console.log('that is wrong')
- }
-}
-
-arrQ[n].rightAns(answer);
-*/
+(function(){
+  function Question(question,answers,correct) {
+    this.question = question,
+    this.answers = answers,
+    this.correct = correct
+  } 
+  
+  Question.prototype.displayAnswer = function() {
+    console.log(this.question)
+  for(var i = 0; i < this.answers.length; i++) {
+    console.log(i + ':' + this.answers[i])
+   }
+  } 
+  
+  var q1 = new Question('What is your name?',['Tim','Jay','Sam'],1); 
+  var q2 = new Question('What city do you live in?', ['Seoul','Tokyo','Beijing'],0); 
+  var q3 = new Question('Do you like coding?',['yes I do','no I don\'t'],0); 
+  
+  var arrQ = [q1,q2,q3]; 
+  
+  var n = Math.floor(Math.random() * arrQ.length); 
+  
+  arrQ[n].displayAnswer(); 
+  
+  var answer = parseInt(prompt('Please select the correct answer.')); 
+  
+  Question.prototype.rightAns = function(ans) {
+   if(ans === this.correct){
+     console.log ('that is correct')
+   } else {
+     console.log('that is wrong')
+   }
+  } 
+  
+  arrQ[n].rightAns(answer);
+  
+  })();
+  /*
 
 // var Question = function(question,answer1,answer2){
 //     this.Quiz = console.log(question),
@@ -302,21 +306,90 @@ arrQ[n].rightAns(answer);
   
 //   var tim = new Question('Is Tim a student?','1.yes','2.no');
 //   tim.correctAnswer();
+*/
 
 
-
+  
 // //Expert level
 // 8. After you display the result, display the next random question, so that the game never ends
-// (Hints: write a function for this and call it right after displayint the result)
-
+// (Hints: write a function for this and call it right after displaying the result)
 // 9. Be careful: after Task 8, the game literally never ends. 
 // So include the option to quit the game if the user writes 'exit' instead of the answer.
 // In this case, DON'T call the function from task 8.
-
-// 10. Track the user's score to make the game more fun! So each time an anser is correct, add 1 point to the score
+// 10. Track the user's score to make the game more fun! So each time an answer is correct, add 1 point to the score
 // (Hint: I'm going to use the power of closures for this, but you don't have to, just do this with the tools you feel more comfortable at this point).
-
 // 11. Display the score in the console. Use yet another method for this.
 
+/*
+(function(){
+  function Question(question,answers,correct) {
+    this.question = question,
+    this.answers = answers,
+    this.correct = correct
+  } 
+  
+  Question.prototype.displayAnswer = function() {
+    console.log(this.question)
+  for(var i = 0; i < this.answers.length; i++) {
+    console.log(i + ':' + this.answers[i])
+   }
+  } 
+  
+  var q1 = new Question('What is your name?',['Tim','Jay','Sam'],1); 
+  var q2 = new Question('What city do you live in?', ['Seoul','Tokyo','Beijing'],0); 
+  var q3 = new Question('Do you like coding?',['yes I do','no I don\'t'],0); 
+  
+  var arrQ = [q1,q2,q3]; 
+
+  function score() {
+    var sc = 0;
+    return function(correct) {
+      if (correct) {
+        sc++;
+      } 
+      return sc;
+    }
+  }
+
+  var keepScore = score();
+
+  function nextQuestion() {
+    
+  var n = Math.floor(Math.random() * arrQ.length); 
+  
+  arrQ[n].displayAnswer(); 
+  
+  var answer = prompt('Please select the correct answer.'); 
+  
+  Question.prototype.rightAns = function(ans, callback) {
+   if(ans === this.correct){
+     var sc;
+     console.log ('that is correct');
+     sc = callback(true);
+   } else {
+     console.log('that is wrong');
+     sc = callback(false);
+   }
+   this.displayScore(sc);
+  } 
+
+  Question.prototype.displayScore = function(score) {
+    consoel.log('Your current score is: ' + score);
+    console.log('---------------------------');
+  }
+  
+  if(answer !== 'exit') {
+    arrQ[n].rightAns(parseInt(answer),keepScore);
+    nextQuestion();
+  }
+
+  nextQuestion();
+  
+  }
+
+  nextQuestion();
+  
+  })();
+*/
 
 
