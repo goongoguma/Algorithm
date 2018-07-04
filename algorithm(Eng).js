@@ -246,70 +246,69 @@ if(avgCalc(john.tips) > avgCalc(mark.tips)){
 
 /*
 (function(){
-  function Question(question,answers,correct) {
-    this.question = question,
-    this.answers = answers,
-    this.correct = correct
-  } 
-  
-  Question.prototype.displayAnswer = function() {
-    console.log(this.question)
-  for(var i = 0; i < this.answers.length; i++) {
-    console.log(i + ':' + this.answers[i])
-   }
-  } 
-  
-  var q1 = new Question('What is your name?',['Tim','Jay','Sam'],1); 
-  var q2 = new Question('What city do you live in?', ['Seoul','Tokyo','Beijing'],0); 
-  var q3 = new Question('Do you like coding?',['yes I do','no I don\'t'],0); 
-  
-  var arrQ = [q1,q2,q3]; 
-  
-  var n = Math.floor(Math.random() * arrQ.length); 
-  
-  arrQ[n].displayAnswer(); 
-  
-  var answer = parseInt(prompt('Please select the correct answer.')); 
-  
-  Question.prototype.rightAns = function(ans) {
-   if(ans === this.correct){
-     console.log ('that is correct')
-   } else {
-     console.log('that is wrong')
-   }
-  } 
-  
-  arrQ[n].rightAns(answer);
-  
-  })();
-  /*
+function Question(question, answers, correct) {
+  this.question = question;
+  this.answers = answers;
+  this.correct = correct;
+} // 1
 
-// var Question = function(question,answer1,answer2){
-//     this.Quiz = console.log(question),
-//     this.Answer1 = console.log(answer1),
-//     this.Answer2 = console.log(answer2),
-//     this.prompt = prompt('What is the answer?')
-//     this.correctAnswer = function(){
-//       if(this.prompt == 1 ) {
-//         console.log('Yes, it is correct')
-//       } else {
-//        console.log('No, it is not')
-//       } 
-//     }
-//   }
+Question.prototype.displayQuestion = function() {
+  console.log(this.question);
+
+  for(var i = 0; i < this.answers.length; i++) {
+    console.log(i + ':' + this.answers[i]);
+  }
+
+} // 6
+
+Question.prototype.checkAnswer = function(ans) {
+if (ans === this.correct) {
+  console.log('Correct answer!');
+} else {
+  console.log('Worng answer!');
+}
+} // 9
+
+var q1 = new Question('Is JavaScript the collest programming language in the world?', ['Yes','No'],0); 
+var q2 = new Question('What is the name of this course\'s teacher?', ['John','Micheal','Jonas'],0);
+var q3 = new Question('What does best describe coding?', ['Boring','Hard','Fun','Tedius'],2); // 2
+
+var questions = [q1,q2,q3]; // 3
+
+var n = Math.floor(Math.random() * questions.length); // 4 
+
+questions[n].displayQuestion() // 5, 7
+
+var answer = parseInt(prompt('Please select the correct answer.')); // 8
+
+questions[n].checkAnswer(answer); })()  // 10
+*/  
+/*
+var Question = function(question,answer1,answer2){
+    this.Quiz = console.log(question),
+    this.Answer1 = console.log(answer1),
+    this.Answer2 = console.log(answer2),
+    this.prompt = prompt('What is the answer?')
+    this.correctAnswer = function(){
+      if(this.prompt == 1 ) {
+        console.log('Yes, it is correct')
+      } else {
+       console.log('No, it is not')
+      } 
+    }
+  }
   
-//   var kim = new Question('Is my name Kim?','1.yes','2.no');
-//   kim.correctAnswer();
+  var kim = new Question('Is my name Kim?','1.yes','2.no');
+  kim.correctAnswer();
   
-//   var jay = new Question('Is this Jay\'s pen?','1.yes','2.no');
-//   jay.correctAnswer();
+  var jay = new Question('Is this Jay\'s pen?','1.yes','2.no');
+  jay.correctAnswer();
   
-//   var tim = new Question('Is Tim a student?','1.yes','2.no');
-//   tim.correctAnswer();
+  var tim = new Question('Is Tim a student?','1.yes','2.no');
+  tim.correctAnswer();
 */
 
-
-  
+ 
 // //Expert level
 // 8. After you display the result, display the next random question, so that the game never ends
 // (Hints: write a function for this and call it right after displaying the result)
@@ -319,77 +318,78 @@ if(avgCalc(john.tips) > avgCalc(mark.tips)){
 // 10. Track the user's score to make the game more fun! So each time an answer is correct, add 1 point to the score
 // (Hint: I'm going to use the power of closures for this, but you don't have to, just do this with the tools you feel more comfortable at this point).
 // 11. Display the score in the console. Use yet another method for this.
-
 /*
 (function(){
-  function Question(question,answers,correct) {
-    this.question = question,
-    this.answers = answers,
-    this.correct = correct
-  } 
+  function Question(question, answers, correct) {
+    this.question = question;
+    this.answers = answers;
+    this.correct = correct;
+  } // 1
   
-  Question.prototype.displayAnswer = function() {
-    console.log(this.question)
-  for(var i = 0; i < this.answers.length; i++) {
-    console.log(i + ':' + this.answers[i])
-   }
-  } 
+  Question.prototype.displayQuestion = function() {
+    console.log(this.question);
   
-  var q1 = new Question('What is your name?',['Tim','Jay','Sam'],1); 
-  var q2 = new Question('What city do you live in?', ['Seoul','Tokyo','Beijing'],0); 
-  var q3 = new Question('Do you like coding?',['yes I do','no I don\'t'],0); 
+    for(var i = 0; i < this.answers.length; i++) {
+      console.log(i + ':' + this.answers[i]);
+    }
   
-  var arrQ = [q1,q2,q3]; 
+  } // 6
+  
+  Question.prototype.checkAnswer = function(ans, callback) {
+  if (ans === this.correct) {
+    var sc;
+    console.log('Correct answer!');
+    sc = callback(true); // 16
+  } else {
+    console.log('Worng answer!');
+
+    sc = callback(false) // 17
+  }
+  this.displayScore(sc); // 19
+  } // 9
+
+  Question.prototype.displayScore = function(score) {
+    console.log('Your current score is: ' + score);
+    console.log('---------------------------------');
+  } // 18
+  
+  var q1 = new Question('Is JavaScript the collest programming language in the world?', ['Yes','No'],0); 
+  var q2 = new Question('What is the name of this course\'s teacher?', ['John','Micheal','Jonas'],0);
+  var q3 = new Question('What does best describe coding?', ['Boring','Hard','Fun','Tedius'],2); // 2
+  
+  var questions = [q1,q2,q3]; // 3
 
   function score() {
     var sc = 0;
     return function(correct) {
       if (correct) {
         sc++;
-      } 
+      }
       return sc;
     }
-  }
+  } // 15
 
   var keepScore = score();
-
+  
   function nextQuestion() {
     
-  var n = Math.floor(Math.random() * arrQ.length); 
+    var n = Math.floor(Math.random() * questions.length); // 4 
+    
+    questions[n].displayQuestion() // 5, 7
+    
+    var answer = prompt('Please select the correct answer.'); // 8
+      
+    if(answer !== 'exit') {
+     questions[n].checkAnswer(parseInt(answer), keepScore); // 14
+    nextQuestion();// 12 after all of these processes are done, we are going to call it again (select question -> display -> check answer, we simply want to call it again).
+  } // 13 
   
-  arrQ[n].displayAnswer(); 
+    
+  } // 11
   
-  var answer = prompt('Please select the correct answer.'); 
   
-  Question.prototype.rightAns = function(ans, callback) {
-   if(ans === this.correct){
-     var sc;
-     console.log ('that is correct');
-     sc = callback(true);
-   } else {
-     console.log('that is wrong');
-     sc = callback(false);
-   }
-   this.displayScore(sc);
-  } 
-
-  Question.prototype.displayScore = function(score) {
-    consoel.log('Your current score is: ' + score);
-    console.log('---------------------------');
-  }
+  nextQuestion() // 12
   
-  if(answer !== 'exit') {
-    arrQ[n].rightAns(parseInt(answer),keepScore);
-    nextQuestion();
-  }
-
-  nextQuestion();
   
-  }
-
-  nextQuestion();
-  
-  })();
+  })()  // 10
 */
-
-
