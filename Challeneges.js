@@ -110,9 +110,9 @@
 
 ////////////////////////////////////////////////////////////
 //// Manual Data Binding
-/// Challenge6-1 : Create render function that renders the new JSX 
-// Call it right away
-// Call it after options array added to 
+//// Challenge6-1 : Create render function that renders the new JSX 
+//// Call it right away
+//// Call it after options array added to 
 // var app = {
 //   title : 'Indecision App',
 //   subtitle : 'Put your life in the hands of a computer',
@@ -204,3 +204,59 @@
 //   ReactDOM.render(template, appRoot);
 // };
 // render();
+
+////////////////////////////////////////////////////////////
+//// Create simple web app with what you have been taught
+// let toggle = true;
+// let number = [];
+
+// const change = () => {
+//   toggle = !toggle
+//   render()
+// };
+
+// const event = (e) => {
+//   e.preventDefault();
+
+// const option = e.target.elements.typing.value;
+
+// if(option) {
+//   number.push(option);
+//   e.target.elements.typing.value = '';
+//   render();
+// }
+// }
+
+// const random = () => {
+//   const ranNum = Math.floor(Math.random() * number.length);
+//   const ran = number[ranNum];
+//   alert(ran);
+// }
+// const render = () => {
+//   const jsx = (
+//   <div>
+//     <h1>Toggle App</h1>
+//     <button onClick={change}>
+//     {toggle ? 'hello' : 'goodbye'}
+//     </button>
+//     <br></br>
+//     {toggle && ('GOOD MORNING!!')}
+//     {toggle || ('GOOD NIGHT!!')}
+//     <p>{number.length > 0 ? '안녕하세요' : undefined}</p>
+//     <p>{number.length}</p>
+//     <ol>
+//     {number.map((str) => <li key={str}> 순서 {str} </li>)}
+//     </ol>
+//     <form onSubmit={event}>
+//     <input type='text' name='typing'/>
+//     <button>Submit</button>
+//     <button disabled ={number.length===0} onClick={random}>Random Number</button>
+//     </form>
+//   </div>
+//   );
+//   ReactDOM.render(jsx,document.getElementById('app'))
+// };
+
+// render();
+
+
