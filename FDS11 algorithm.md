@@ -64,11 +64,24 @@ insensitiveEqual('hello', 'Hello');
 ```
 hideId = (email) => {
   const beforeDomain = /.+(?=.*@)/g
-  const obscuredAddress = email.replace(beforeDomain, '*****');
+  const obscuredAddress = email.replace(beforeDomain, '*');
   return obscuredAddress
 }
-hideId('wogus7an@naver.com');
+hideId('abcdefg@gmail.com'); 
 ```
+```
+const hideId = (email) => {
+  const splitEmail = email.split('@');
+  const EmailId = splitEmail[0];
+  const splitEmailId = EmailId.split('');
+  const makeStars = Array(splitEmailId.length+1).join('*')
+  const starsEmail = makeStars + '@' + splitEmail[1];
+  return starsEmail
+}
+
+hideId('abcdefg@gmail.com')
+```
+
 
 ### 문제 7
 - 숫자로만 이루어진 문자열을 입력받아, 연속된 두 짝수 사이에 하이픈(-)을 끼워넣은 문자열을 반환하는 함수(insertHyphen)를 작성하세요.
