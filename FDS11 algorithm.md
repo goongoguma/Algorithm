@@ -22,7 +22,7 @@ printEvenOdd(3);
 ### 문제 3-1
 - 문제 3번의 함수(printEvenOdd)를 이용해서, 1부터 20까지의 수가 각각 짝수인지 홀수인지 출력하는 함수(printEvenOdd20)를 작성하세요.
 ```
-printEvenOdd20 = () => {
+const printEvenOdd20 = () => {
   for(let i = 1; i < 21; i++) {
     if(i%2===0) {
       console.log(`${i}:짝수`);
@@ -49,20 +49,15 @@ printLargerFirst(5, 15, -2);
 ### 문제 5
 - 두 문자열 str1, str2를 입력받아, 대소문자를 구분하지 않고(case insensitive) 두 문자열이 동일한지를 반환하는 함수(insensitiveEqual)를 작성하세요.
 ```
-const insensitiveEqual = (str1, str2) => {
-  if(str1.toUpperCase() === str2.toUpperCase()) {
-    return true
-  } else {
-    return false
-  };
-};
-insensitiveEqual('hello', 'Hello');
+const insensitiveEqual = (str1, str2) => str1.toUpperCase() === str2.toUpperCase() ? true : false
+
+insensitiveEqual('helo', 'Hello');
 ```
 
 ### 문제 6
 - 이메일 주소를 입력받아, 아이디 부분을 별표(*)로 가린 새 문자열을 반환하는 함수(hideId)를 작성하세요.
 ```
-hideId = (email) => {
+const hideId = (email) => {
   const beforeDomain = /.+(?=.*@)/g
   const obscuredAddress = email.replace(beforeDomain, '*');
   return obscuredAddress
