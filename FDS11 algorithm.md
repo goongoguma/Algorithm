@@ -172,15 +172,6 @@ IsPrime(7)
 * * * * *
 ```
 ``` js
-function displayStars(n) {
-let str ='';
-  for(let i = 1; i <= n; i++) {
-  str = str + '*';
- }
- console.log(str);
-}
-```
-```js
 function displayStars(n){
 let str = '';
 for(let i = 0; i < n; i++) {
@@ -190,8 +181,7 @@ for(let i = 0; i < n; i++) {
  } console.log(str)
 }
 displayStars(5)
-```
-```js
+
 // reverse
 function displayStarsReverse(n){
 let str = '';
@@ -202,41 +192,34 @@ for(let i = n; 0 <= i; i--) {
  } console.log(str);
 }
 displayStarsReverse(5)
-```
-```js
-// pyramid
-function displayStarsPyramid(n) {
-let str = '';
-for(let i = 0; i < n; i++) {
-  for(var x = n; i <= x; x--) {
-    str = str + ' ';
-  }
-  for(let j = 0; j <= 2*i; j++) {
-  str = str + '*';
-  } str = str + '\n';
- } console.log(str)
-}
-// i = 0, 0 < n, j = 0, j <= 2 * 0, *, j = 1(x)
-// i = 1, 1 < n, j = 0, j <= 2 * 1, *, j = 1, * + *, j = 2, * + * + *, j = 3(x)
-// i = 2, 2 < n, j = 0, j <= 2 * 2, *, j = 1, * + *, j = 2, * + * + *, j = 3, * + * + * + *, j = 4, * + * + * + * + *, j = 5(x)
 
-displayStarsPyramid(5)
-```
-```js
-// reverse pyramid
-function displayPyramidReverse(n){
-let str = '';
-for(let i = n; 0 < i; i--) {
-  for(var x = n; i <= x; x--) {
-    str = str + ' ';
-  }
-  for(let j = 0; 0 < i-j; j++) {
-    str = str + ' *'; 
-  } str = str + '\n';
- } 
- console.log(str);
+// 피라미드
+function pyramid(n) {
+  let str = '';
+  for(let x = 0; x < n; x++) {
+    for(let y = n; 0 < y-x; y--) {
+      str = str + ' ';
+    } 
+    for(let z = 0; z <= x; z++) {
+      str = str + ' *';
+    } str = str + '\n';
+  } console.log(str)
 }
-displayPyramidReverse(5)
+pyramid(5);
+
+// 역피라미드
+function reversePyramid(n) {
+  let str ='';
+  for(let x = 0; x < n; x++) {
+    for(let y = 0; y < x; y++) {
+      str = str + ' ';
+    }
+    for(let z = n; 0 < z-x; z--) {
+      str = str + ' *';
+    } str = str + '\n';
+  } console.log(str);
+}
+reversePyramid(5);
 ```
 
 ### 문제 13
@@ -269,28 +252,25 @@ displayPyramidReverse(5)
     *
 ```
 ```js
-function displayDiamond(n){
+function diamond(n) {
 let str = '';
- // 피라미드
-for(let i = 0; i < n; i++) {
-  for(var x = n; i < x; x--) { // 피라미드 공백
-    str = str + ' ';
-  }
-  for(let j = 0; j <= i; j++) {
-  str = str + ' *';
-  } str = str + '\n';
- }
- // 역피라미드 (피라미드의 바닥부터 거꾸로 시작)
-for(let i = n-1; 0 < i; i--) { 
-  for(var x = n; i <= x; x--) {// 역피라미드 공백
-    str = str + ' ';
-  }
-  for(let j = 0; 0 < i-j; j++) {
-    str = str + ' *'; 
-  } str = str + '\n';
- } 
- console.log(str);
+  for(let x = 0; x < n; x++) {
+    for(let y = n; 0 < y-x; y--) {
+      str = str + ' ';
+    } 
+    for(let z = 0; z <= x; z++) {
+      str = str + ' *';
+    } str = str + '\n';
+  } 
+  for(let x = 0; x < n; x++) {
+    for(let y = 0; y < x+2; y++) {
+      str = str + ' ';
+    }
+    for(let z = n; 0 < z-x-1; z--) {
+      str = str + ' *';
+    } str = str + '\n';
+  } 
+  console.log(str);
 }
-displayDiamond(5);
-
+diamond(5)
 ```
