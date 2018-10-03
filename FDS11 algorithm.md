@@ -274,3 +274,71 @@ let str = '';
 }
 diamond(5)
 ```
+
+### 문제 14
+* 문자열을 입력받아, 문자열 안에 들어있는 단어 중 가장 긴 단어를 반환하는 함수를 작성하세요. (문자열에 개행이 없다고 가정합니다.)
+```js
+const longest = (str) => {
+  let strSplit = str.split(' ');
+  for(let i = 0; i < strSplit.length; i++) {
+    strSort = strSplit.sort((x,y) => y.length - x.length);
+  } return strSort[0]
+}
+longest('happy birthday to you');
+```
+
+### 문제 15
+* 문자열 `s`과 자연수 `n`을 입력받아, `s`의 첫 `n`개의 문자만으로 이루어진 새 문자열을 반환하는 함수를 작성하세요.
+```js
+const newChar = (str,n) => {
+  let strArr = [...str]
+  let strArrSplice = strArr.splice(0,n);
+  return strArrSplice.join('')
+}
+newChar('javascript is fun',5);
+```
+
+### 문제 16
+* Camel case의 문자열을 입력받아, snake case로 바꾼 새 문자열을 반환하는 함수를 작성하세요.
+```js
+const caseSwitch = (str) => {
+  let strArr = [...str];
+  for(let i = 0; i < strArr.length; i++) {
+    if(strArr[i] === strArr[i].toUpperCase()) {
+     strArr.splice(i, 1, '_' + strArr[i].toLowerCase());
+    } 
+  } return strArr.join('')
+}
+caseSwitch('camelCaseSnakeCase');
+```
+
+### 문제 17
+* `String.prototype.split`과 똑같이 동작하는 함수를 작성하세요.
+
+예:
+```
+split('Hello World'); -> ['Hello World']
+split('Hello World', ' '); -> ['Hello', 'World']
+split('let,const,var', ',') -> ['let', 'const', 'var']
+```
+```js
+const splitStr = (str, x) => {
+  let arr = [];
+  let start = 0; // start는 for문 안에서 if문을 다시 돌때 시작점을 지정해 주기 위한 변수
+  for(let i = 0; i < str.length; i++) {
+    if(str[i] === x) {
+    // str[6] === 'o'
+    // str[14] === 'o'
+      arr.push(str.slice(start, i))
+    // [].push(str.slice(0, 6 - 1))
+    // [].push(str.slice(7, 14 - 1))
+      start = i + 1 
+    // start = 6 + 1
+    // start = 14 + 1
+    }
+  } 
+  arr.push(str.slice(start, str.length)); // 마지막 배열이 나오지 않으므로 따로 push해준다 
+  return arr
+}
+splitStr('nice to meet you', 'o');
+```
