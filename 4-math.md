@@ -56,6 +56,15 @@ shuffle([1,2,3,4,5])
 ### 문제 5
 
 임의의 HTML 색상 코드를 반환하는 함수를 작성하세요.
+```js
+const ranCol = (a,b,c) => {
+a = Math.floor(Math.random()*255);
+b = Math.floor(Math.random()*255);
+c = Math.floor(Math.random()*255);
+return 'rgba' + '(' + a +',' + b + ','+ c +')'
+}
+ranCol()
+```
 
 ### 문제 6
 
