@@ -41,15 +41,44 @@ ceilBy5(37)
 
 배열을 입력받아, 요소들의 순서를 뒤섞은 새 배열을 반환하는 함수를 작성하세요.
 ```js
-//(Fisher-Yates)
-function shuffle(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    let j = Math.floor(Math.random() * (i + 1));
-    let temp = array[i];
-    array[i] = array[j];
-    array[j] = temp;
-  }
-  return array;
+const shuffle = (arr) => {
+container = '';
+for(let i = 0; i < arr.length+5; i++) {
+arrSplice = arr.splice((Math.floor(Math.random()*arr.length)),1)
+arr2 = String(arrSplice)
+  container += arr2
+} return container.split('').map(Number)
+}
+shuffle([1,2,3,4,5])
+
+const shuffle = (arr) => {
+  const container = [];
+  const arrLeng = arr.length; // 배열의 길이를 고정해주기위해 const 사용
+  for (let i = 0; i < arrLeng; i++) {
+    arrSplice = arr.splice((Math.floor(Math.random() * arr.length)), 1)
+    container.push(Number(arrSplice))
+  } return container
+}
+shuffle([1, 2, 3, 4, 5])
+
+// Fisher-Yates
+// function shuffle(array) {
+//   for (let i = array.length - 1; i > 0; i--) {
+//     let j = Math.floor(Math.random() * (i + 1));
+//     let temp = array[i];
+//     array[i] = array[j];
+//     array[j] = temp;
+//   }
+//   return array;
+// }
+// shuffle([1,2,3,4,5])
+
+// 강사님의 풀이
+// splice, push, Math.floor, Math.random으로 풀이 가능
+function shuffle(input) {
+  const newArr = [];
+
+  return newArr
 }
 shuffle([1,2,3,4,5])
 ```
@@ -57,13 +86,25 @@ shuffle([1,2,3,4,5])
 
 임의의 HTML 색상 코드를 반환하는 함수를 작성하세요.
 ```js
-const ranCol = (a,b,c) => {
-a = Math.floor(Math.random()*255);
-b = Math.floor(Math.random()*255);
-c = Math.floor(Math.random()*255);
+const ranCol = () => {
+const a = Math.floor(Math.random()*256);
+const b = Math.floor(Math.random()*256);
+const c = Math.floor(Math.random()*256);
 return 'rgba' + '(' + a +',' + b + ','+ c +')'
 }
 ranCol()
+
+// 강사님 풀이
+function randomColor() {
+// 16진수 -> '0123456789ABCDEF'
+  const candidate = '0123456789ABCDEF';
+  let color = '#';
+  for(let i = 0; i < 6; i++) {
+    color += candidate[Math.floor(candidate.length * Math.random())];
+  } 
+  return color
+}
+randomColor() // '#F3C607'
 ```
 
 ### 문제 6
@@ -76,6 +117,28 @@ const randomStr = (num) => {
   return random
 }
 randomStr(7)
+
+// 강사님의 풀이
+function randomString(n) {
+ const candidate = '1234567890!@#$%^&*()abcdefg'
+ let result = '';
+ for(let i = 0l i < n; i++) {
+   const randomIndex = Math.floor(Math.random() * candidate.length)
+   result += candidate[randomIndex]
+ }
+ return result
+}
+randomString(4) 'asdf'
+
+//String.fromCodePoint(111) -> 숫자로부터 숫자에 해당하는 유니코드 포인트를 반환해주는 함수를 이용
+function randomString(n) {
+  let result = '';
+  for(let i = 0; i < n; i++) {
+    result += String.fromCodePoint(Math.floor(Math.random() * 65536))
+  }
+  return result 
+}
+randomString(4)
 ```
 ### 문제 7
 
